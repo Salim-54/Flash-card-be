@@ -2,10 +2,10 @@ import { objectType, extendType, nonNull, stringArg } from "nexus";
 import { Prisma } from "@prisma/client";
 
 export const Quiz = objectType({
-    name: "Quiz", // 1 
-    definition(t) {  // 2
-        t.nonNull.int("id"); // 3 
-        t.nonNull.string("description"); // 4
+    name: "Quiz", 
+    definition(t) { 
+        t.nonNull.int("id"); 
+        t.nonNull.string("description"); 
         t.nonNull.string("name");
         t.nonNull.list.nonNull.field("questions", {
             type: "Question",
@@ -39,7 +39,7 @@ export const QuizMutation = extendType({
                 description: nonNull(stringArg()),
             },
             resolve(parent, args, context) { 
-                const newQuiz = context.prisma.quiz.create({   // 2
+                const newQuiz = context.prisma.quiz.create({  
                     data: {
                         description: args.description,
                         name: args.name,
