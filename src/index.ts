@@ -1,5 +1,6 @@
 import { context } from "./context";   
 import { ApolloServer } from "apollo-server";
+import 'dotenv/config';
 
 // import { context } from "./context";   
 
@@ -10,7 +11,7 @@ export const server = new ApolloServer({
     context, 
 });
 
-const port = 4000;
+const port = process.env.PORT
 // 2
 server.listen({port}).then(({ url }) => {
     console.log(`🚀  Server ready at ${url}🔥🔥`);
